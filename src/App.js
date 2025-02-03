@@ -71,6 +71,9 @@ export default function App() {
         <>
             <View style={styles.container}>
                 <View>
+                    <Image style={styles.Logo} source={require('../assets/pics/Logo.png')}></Image>
+                </View>
+                <View>
                     {!animationFinished ? (
                         <View>
                             <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
@@ -99,6 +102,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    Logo:{
+        width: 250,
+        height: 250,
+        resizeMode: 'contain',
     },
     TouchableButton: {
         marginVertical:15,
