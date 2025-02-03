@@ -73,9 +73,10 @@ export default function App() {
                 <View style={styles.logoContainer}>
                     <Image style={styles.Logo} source={require('../assets/pics/Logo.png')}></Image>
                 </View>
+
                 <View>
                     {!animationFinished ? (
-                        <View>
+                        <View >
                             <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
                         </View>
                     ) : (<View>
@@ -84,7 +85,8 @@ export default function App() {
                         </View>
                     )}
                 </View>
-                <View>
+
+                <View style={styles.touchableContainer}>
                     <TouchableOpacity onPress={chosenMap}
                                       style={styles.TouchableButton}>
                         <Text style={styles.TouchableText}>Choisir une carte</Text>
@@ -114,11 +116,17 @@ const styles = StyleSheet.create({
         height: 200,
         resizeMode: 'contain',
     },
+    touchableContainer: {
+        position: 'absolute',
+        bottom:100,
+        zIndex: 1,
+    },
     TouchableButton: {
-        marginVertical:15,
         backgroundColor: 'orange',
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 15,
+        borderColor: 'white',
+        borderWidth: 6,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -129,12 +137,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     NameText: {
+        fontFamily: 'ShinGoProExtraBold',
         fontSize: 20,
         fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center',
+        marginVertical:15
     },
-    Icon: {
-        marginVertical: 30,
-    },
+    Icon:{
+        position: 'relative',
+        marginTop:30,
+    }
 });
