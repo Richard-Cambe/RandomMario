@@ -7,13 +7,13 @@ export default function App() {
 
     const [index, setIndex] = useState(0);
 
-    let chosenMap = () => {
-        return Math.floor(Math.random() * (data.length));
+    let chosenMap = (min, max) => {
+        return Math.floor(Math.random() * (1-7));
     }
   return (
       <>
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => setIndex(chosenMap())}
+            <Button onPress={() => setIndex(chosenMap())}
                               title="Choisir une carte"
             />
       </View>
