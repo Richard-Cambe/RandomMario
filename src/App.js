@@ -1,30 +1,32 @@
-import {Button, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {data} from './allMaps'
 
 export default function App() {
-
     const [map, setMap] = useState(null);
 
     const chosenMap = () => {
         const randomMapId =  Math.floor(Math.random() * 7);
-        const mapIcon = data[randomMapId];
-        setMap(map);
+        const mapData = data[randomMapId];
+        setMap(mapData);
     };
 
     return (
         <>
             <View style={styles.container}>
                 <TouchableOpacity onPress={chosenMap}
-                                  style={styles.TouchableButton}>/>
+                                  style={styles.TouchableButton}>
                     <Text style={styles.TouchableText}>Choisir une carte</Text>
                 </TouchableOpacity>
-                <View>
-                    <Text>{setMap.name}</Text>
-                    <Image source={setMap.boardView}/>
-                </View>
 
-                    {/*<Text>{index}</Text>*/}
+                {map ? (
+                    <View>
+                        <Text>{map.name}</Text>
+                        <Image source={map.boardIcon}/>
+                    </View>
+                ) : (
+                    <Text> Choisir une map !!! </Text>
+                )}
             </View>
         </>
 );
