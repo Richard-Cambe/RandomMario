@@ -33,7 +33,8 @@ export default function App() {
 
     const playSound = async () => {
         if (sound) {
-            await sound.replayAsync()
+            await sound.stopAsync()
+            await sound.playAsync()
         }
     };
 
@@ -44,12 +45,12 @@ export default function App() {
         setAnimationFinished(false);
         setMap(null);
         let animationTimer = 0
+        playSound();
 
         interval.current = setInterval(() => {
             setImageIconIndex((prevIndex) => (prevIndex + 1) % imageIconLength);
-            playSound();
             animationTimer += 100;
-            if (animationTimer >= 4000) {
+            if (animationTimer >= 6000) {
                 clearInterval(interval.current);
                 setMap(mapData);
                 setAnimationFinished(true);
@@ -69,19 +70,23 @@ export default function App() {
     return (
         <>
             <View style={styles.container}>
-                <TouchableOpacity onPress={chosenMap}
-                                  style={styles.TouchableButton}>
-                    <Text style={styles.TouchableText}>Choisir une carte</Text>
-                </TouchableOpacity>
-                {!animationFinished ? (
-                    <View>
-                        <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
-                    </View>
-                ) : (<View>
-                        <Text style={styles.NameText}>{map.name}</Text>
-                        <Image style={styles.Icon} source={map.boardIcon}/>
-                    </View>
-                )}
+                <View>
+                    {!animationFinished ? (
+                        <View>
+                            <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
+                        </View>
+                    ) : (<View>
+                            <Text style={styles.NameText}>{map.name}</Text>
+                            <Image style={styles.Icon} source={map.boardIcon}/>
+                        </View>
+                    )}
+                </View>
+                <View>
+                    <TouchableOpacity onPress={chosenMap}
+                                      style={styles.TouchableButton}>
+                        <Text style={styles.TouchableText}>Choisir une carte</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </>
     );
@@ -96,6 +101,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     TouchableButton: {
+        marginVertical:15,
         backgroundColor: 'orange',
         padding: 10,
         borderRadius: 5,
