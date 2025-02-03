@@ -14,23 +14,27 @@ export default function App() {
     return (
         <>
             <View style={styles.container}>
+                { map ? (
+                    <View>
+                        <Text style={styles.NameText}>{map.name}</Text>
+                        <Image style={styles.Icon} source={map.boardIcon}/>
+                    </View>
+                ) : (
+                    <Image style={styles.Icon} source={require('../assets/pics/marioquestionmark.png')}/>
+                )}
                 <TouchableOpacity onPress={chosenMap}
                                   style={styles.TouchableButton}>
                     <Text style={styles.TouchableText}>Choisir une carte</Text>
                 </TouchableOpacity>
-
-                {map ? (
-                    <View>
-                        <Text>{map.name}</Text>
-                        <Image source={map.boardIcon}/>
-                    </View>
-                ) : (
-                    <Text> Choisir une map !!! </Text>
-                )}
             </View>
         </>
 );
 }
+
+
+
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -51,4 +55,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+    noText: {
+        color:'red',
+    },
+    NameText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    Icon:{
+        marginVertical:30,
+    }
 });
