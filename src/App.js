@@ -26,8 +26,8 @@ export default function App() {
 
     const loadSound = async () => {
         const { sound } = await Audio.Sound.createAsync(
-            require('../assets/sounds/Item Box.mp3'),
-        );
+            require('../assets/sounds/Box.mp3')
+    );
         setSound(sound);
     };
 
@@ -35,7 +35,7 @@ export default function App() {
         if (sound) {
             await sound.replayAsync()
         }
-    }
+    };
 
     const chosenMap = () => {
         const randomMapId = Math.floor(Math.random() * imageIconLength);
