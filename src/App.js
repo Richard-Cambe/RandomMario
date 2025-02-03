@@ -70,7 +70,7 @@ export default function App() {
     return (
         <>
             <View style={styles.container}>
-                <View>
+                <View style={styles.logoContainer}>
                     <Image style={styles.Logo} source={require('../assets/pics/Logo.png')}></Image>
                 </View>
                 <View>
@@ -102,10 +102,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
+    },
+    logoContainer: {
+      position:'absolute',
+      top:15,
+        zIndex: 1,
     },
     Logo:{
-        width: 250,
-        height: 250,
+        width: 200,
+        height: 200,
         resizeMode: 'contain',
     },
     TouchableButton: {
