@@ -12,23 +12,23 @@ export default function App() {
         setMap(map);
     };
 
-//     return (
-//         <>
-//             <View style={styles.container}>
-//                 <Image
-//                     source={require("../assets/board-icons/super-mario-party-jamboree-board-icon-2.png")}
-//                     style={{width: 200, height: 200}}
-//                     resizeMode={"contain"}
-//                 />
-//                 <TouchableOpacity onPress={() => setIndex(chosenMap(1, 7))}
-//                                   style={styles.TouchableButton}>/>
-//                     <Text style={styles.TouchableText}>Choisir une carte</Text>
-//                 </TouchableOpacity>
-//                     <Text>{index}</Text>
-//             </View>
-//         </>
-// );
-// }
+    return (
+        <>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={chosenMap}
+                                  style={styles.TouchableButton}>/>
+                    <Text style={styles.TouchableText}>Choisir une carte</Text>
+                </TouchableOpacity>
+                <View>
+                    <Text>{setMap.name}</Text>
+                    <Image source={setMap.boardView}/>
+                </View>
+
+                    {/*<Text>{index}</Text>*/}
+            </View>
+        </>
+);
+}
 
 const styles = StyleSheet.create({
     container: {
