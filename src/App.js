@@ -2,13 +2,21 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import {data} from './allMaps'
 import {useFonts} from "expo-font";
-import { Audio } from 'expo-av';
+import {Audio} from 'expo-av';
 
 export default function App() {
     const [map, setMap] = useState(null);
     const [animationFinished, setAnimationFinished] = useState(false);
     const [imageIconIndex, setImageIconIndex] = useState(0);
     const [sound, setSound] = useState();
+
+    const [buttonColor, setButtonColor] = useState("#00bfff");
+    const colors = ["#ff1493", "#9acd32", "#ffa500", "#00bfff"];
+    const changeColor = () => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        setButtonColor(randomColor);
+    };
+
 
     const imageIconLength = data.length;
     const interval = useRef(null)
@@ -25,9 +33,9 @@ export default function App() {
     });
 
     const loadSound = async () => {
-        const { sound } = await Audio.Sound.createAsync(
+        const {sound} = await Audio.Sound.createAsync(
             require('../assets/sounds/Box.mp3')
-    );
+        );
         setSound(sound);
     };
 
@@ -69,32 +77,37 @@ export default function App() {
 
     return (
         <>
-            <View style={styles.container}>
-                <View style={styles.logoContainer}>
-                    <Image style={styles.Logo} source={require('../assets/pics/Logo.png')}></Image>
-                </View>
-
-                <View>
-                    {!animationFinished ? (
-                        <View >
-                            <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
-                        </View>
-                    ) : (<View>
-                            <Text style={styles.NameText}>{map.name}</Text>
-                            <Image style={styles.Icon} source={map.boardIcon}/>
-                        </View>
-                    )}
-                </View>
-
-                <View style={styles.touchableContainer}>
-                    <TouchableOpacity onPress={chosenMap}
-                                      style={styles.TouchableButton}>
-                        <Text style={styles.TouchableText}>Choisir une carte</Text>
-                    </TouchableOpacity>
-                </View>
+        <View style={styles.container}>
+            <View style={styles.logoContainer}>
+                <Image style={styles.Logo} source={require('../assets/pics/Logo.png')}></Image>
             </View>
-        </>
-    );
+
+            <View>
+                {!animationFinished ? (
+                    <View>
+                        <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
+                    </View>
+                ) : (<View>
+                        <Text style={styles.NameText}>{map.name}</Text>
+                        <Image style={styles.Icon} source={map.boardIcon}/>
+                    </View>
+                )}
+            </View>
+
+            <View style={styles.touchableContainer}>
+                <TouchableOpacity
+                    onPress={() => {
+                    chosenMap();
+                    changeColor();
+                }}
+                    style={[styles.TouchableButton,{backgroundColor:buttonColor}]}>
+                <Text style={styles.TouchableText}>Choisir une carte</Text>
+            </TouchableOpacity>
+        </View>
+        </View>
+</>
+)
+    ;
 }
 
 
@@ -107,22 +120,22 @@ const styles = StyleSheet.create({
         position: 'relative',
     },
     logoContainer: {
-      position:'absolute',
-      top:15,
+        position: 'absolute',
+        top: 15,
         zIndex: 1,
     },
-    Logo:{
+    Logo: {
         width: 200,
         height: 200,
         resizeMode: 'contain',
     },
     touchableContainer: {
         position: 'absolute',
-        bottom:100,
+        bottom: 100,
         zIndex: 1,
     },
     TouchableButton: {
-        backgroundColor: 'orange',
+        backgroundColor: '#00bfff',
         padding: 10,
         borderRadius: 15,
         borderColor: 'white',
@@ -142,10 +155,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center',
-        marginVertical:15
+        marginVertical: 15
     },
-    Icon:{
+    Icon: {
         position: 'relative',
-        marginTop:30,
+        marginTop: 30,
     }
 });
