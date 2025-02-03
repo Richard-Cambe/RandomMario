@@ -4,11 +4,22 @@ import {data} from './allMaps'
 
 export default function App() {
     const [map, setMap] = useState(null);
+    const [animationFinished, setAnimationFinished] = useState(false);
+    const [imageIconIndex, setImageIconIndex] = useState(0);
+
+    const imageIconLength = data.length;
 
     const chosenMap = () => {
         const randomMapId =  Math.floor(Math.random() * 7);
         const mapData = data[randomMapId];
         setMap(mapData);
+
+        setAnimationFinished(false);
+        setMap(null);
+
+
+        let animationTimer = 0
+
     };
 
     return (
