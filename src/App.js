@@ -11,23 +11,22 @@ export default function App() {
     const interval = useRef(null)
 
     const chosenMap = () => {
-        const randomMapId =  Math.floor(Math.random() * 7);
+        const randomMapId =  Math.floor(Math.random() * imageIconLength);
         const mapData = data[randomMapId];
-        setMap(mapData);
 
         setAnimationFinished(false);
         setMap(null);
-
         let animationTimer = 0
+
         interval.current = setInterval(() => {
             setImageIconIndex((prevIndex) => (prevIndex +1) % imageIconLength);
-            animationTimer += 50;
-            if (animationTimer >= 1500) {
+            animationTimer += 100;
+            if (animationTimer >= 4000) {
                 clearInterval(interval.current);
                 setMap(mapData);
                 setAnimationFinished(true);
             }
-        }, 100);
+        }, 50);
     };
 
     useEffect(() => {
@@ -37,18 +36,18 @@ export default function App() {
     return (
         <>
             <View style={styles.container}>
-                { map ? (
-                    <View>
-                        <Text style={styles.NameText}>{map.name}</Text>
-                        <Image style={styles.Icon} source={map.boardIcon}/>
-                    </View>
-                ) : (
-                    <Image style={styles.Icon} source={require('../assets/pics/marioquestionmark.png')}/>
-                )}
                 <TouchableOpacity onPress={chosenMap}
                                   style={styles.TouchableButton}>
                     <Text style={styles.TouchableText}>Choisir une carte</Text>
                 </TouchableOpacity>
+                { !animationFinished ? (
+                    <View>
+                        <Image style={styles.Icon} source={data[imageIconIndex].boardIcon} />
+                    </View>
+                ) : (
+                    <Image style={styles.Icon} source={map.boardIcon}/>
+                )}
+
             </View>
         </>
 );
