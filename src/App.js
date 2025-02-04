@@ -21,14 +21,7 @@ export default function App() {
     const imageIconLength = data.length;
     const interval = useRef(null)
 
-    const [fontsLoaded] = useFonts({
-        'ShinGoProRegular': require('../assets/fonts/AOTFShinGoProRegular.otf'),
-        'ShinGoProBold': require('../assets/fonts/AOTFShinGoProBold.otf'),
-        'ShinGoProDeBold': require('../assets/fonts/AOTFShinGoProDeBold.otf'),
-        'ShinGoProHeavy': require('../assets/fonts/AOTFShinGoProHeavy.otf'),
-        'ShinGoProExLight': require('../assets/fonts/AOTFShinGoProExLight.otf'),
-        'ShinGoProLight': require('../assets/fonts/AOTFShinGoProLight.otf'),
-        'ShinGoProMedium': require('../assets/fonts/AOTFShinGoProMedium.otf'),
+    const [loaded, error] = useFonts({
         'SuperMario256': require('../assets/fonts/SuperMario256.ttf'),
     });
 
@@ -70,6 +63,7 @@ export default function App() {
         loadSound();
 
         return () => clearInterval(interval.current);
+
         if (sound) {
             sound.unloadAsync();
         }
@@ -144,21 +138,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     TouchableText: {
-        fontFamily: 'ShinGoProExtraBold',
+        fontFamily: 'SuperMario256',
         color: '#fff',
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 20,
     },
     NameText: {
-        fontFamily: 'ShinGoProExtraBold',
+        fontFamily: 'SuperMario256',
         fontSize: 20,
-        fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center',
-        marginVertical: 15
+        marginVertical: 15,
+        color:'#fff',
     },
     Icon: {
         position: 'relative',
         marginTop: 30,
+        alignSelf: 'center',
     }
 });

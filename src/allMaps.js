@@ -1,28 +1,28 @@
 export const data = [
     {
         id: '1',
-        name: "Bois Rieur de Méga Wiggler",
+        name: "Bois Rieur de Mega Wiggler",
         description: "Un bois mystérieux et vibrant, peuplé par les redoutables Wiggler géants.",
         boardView: require('../assets/board-view/super-mario-party-jamboree-website-board-1.jpg'),
         boardIcon: require('../assets/board-icons/super-mario-party-jamboree-board-icon-1.png'),
     },
     {
         id: '2',
-        name: "Circuit Débridé",
+        name: "Circuit Debride",
         description: "Un circuit rapide et sinueux, idéal pour les courses effrénées.",
         boardView: require('../assets/board-view/super-mario-party-jamboree-website-board-2.jpg'),
         boardIcon: require('../assets/board-icons/super-mario-party-jamboree-board-icon-2.png'),
     },
     {
         id: '3',
-        name: "Île Goomba",
+        name: "Ile Goomba",
         description: "Une île pleine de Goombas et d'obstacles, un vrai défi pour les aventuriers.",
         boardView: require('../assets/board-view/super-mario-party-jamboree-website-board-3.jpg'),
         boardIcon: require('../assets/board-icons/super-mario-party-jamboree-board-icon-3.png'),
     },
     {
         id: '4',
-        name: "Base Secrète de Bowser",
+        name: "Base Secrete de Bowser",
         description: "La base secrète de Bowser, avec des pièges sournois et des ennemis redoutables.",
         boardView: require('../assets/board-view/super-mario-party-jamboree-website-board-7.jpg'),
         boardIcon: require('../assets/board-icons/super-mario-party-jamboree-board-icon-7.png'),
@@ -43,7 +43,7 @@ export const data = [
     },
     {
         id: '7',
-        name: "Château Arc-en-Ciel de Mario",
+        name: "Chateau Arc-en-Ciel de Mario",
         description: "Un château magique rempli de mystères et de couleurs éclatantes.",
         boardView: require('../assets/board-view/super-mario-party-jamboree-website-board-6.jpg'),
         boardIcon: require('../assets/board-icons/super-mario-party-jamboree-board-icon-6.png'),
