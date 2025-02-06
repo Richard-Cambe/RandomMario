@@ -1,10 +1,10 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, Vibration, View} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import {data} from './allMaps'
 import {useFonts} from "expo-font";
 import {Audio} from 'expo-av';
 import Animated, { useSharedValue, withTiming, withRepeat, ReduceMotion } from "react-native-reanimated";
-
+import * as Haptics from 'expo-haptics';
 
 export default function App() {
     const [map, setMap] = useState(null);
@@ -69,8 +69,10 @@ export default function App() {
 
         interval.current = setInterval(() => {
             setImageIconIndex((prevIndex) => (prevIndex + 1) % imageIconLength);
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
             animationTimer += 100;
             if (animationTimer >= 6000) {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
                 clearInterval(interval.current);
                 setMap(mapData);
                 setAnimationFinished(true);
@@ -83,19 +85,19 @@ export default function App() {
         loadSound2();
 
         translateY.value = withRepeat(
-                withTiming(50, { duration: 800 }),
-                -1,
-                true,
-                () => {},
-                ReduceMotion.System,
+            withTiming(50, { duration: 800 }),
+            -1,
+            true,
+            () => {},
+            ReduceMotion.System,
         )
-            if (sound) {
-                sound.unloadAsync();
-            } else if (sound2) {
-                sound2.unloadAsync();
-            }
+        if (sound) {
+            sound.unloadAsync();
+        } else if (sound2) {
+            sound2.unloadAsync();
+        }
 
-            return () => clearInterval(interval.current);
+        return () => clearInterval(interval.current);
     }, []);
 
     return <>
@@ -104,24 +106,27 @@ export default function App() {
                 <Image style={styles.Logo} source={require('../assets/pics/Logo.png')}></Image>
             </View>
             <View style={styles.logoContainer}>
-                <TouchableOpacity onPress={() => playSound2()}>
+                <TouchableOpacity onPress={() => {
+                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+                    playSound2()}}>
                     <Animated.Image style={[styles.Title,{transform: [{translateY}]}]}
-                           source={require('../assets/pics/randomize-me-2-4-2025.png')}/>
+                                    source={require('../assets/pics/randomize-me-2-4-2025.png')}/>
                 </TouchableOpacity>
             </View>
 
             <View>
                 {!animationFinished ? <View>
-                        <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
-                    </View> : <View>
-                        <Text style={styles.NameText}>{map.name}</Text>
-                        <Image style={styles.Icon} source={map.boardIcon}/>
-                    </View>}
+                    <Image style={styles.Icon} source={data[imageIconIndex].boardIcon}/>
+                </View> : <View>
+                    <Text style={styles.NameText}>{map.name}</Text>
+                    <Image style={styles.Icon} source={map.boardIcon}/>
+                </View>}
             </View>
 
             <View style={styles.touchableContainer}>
                 <TouchableOpacity
                     onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
                         chosenMap();
                         changeColor();
                     }}
