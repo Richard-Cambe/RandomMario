@@ -126,7 +126,7 @@ export default function App() {
             <View style={styles.touchableContainer}>
                 <TouchableOpacity
                     onPress={() => {
-                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
                         chosenMap();
                         changeColor();
                     }}
