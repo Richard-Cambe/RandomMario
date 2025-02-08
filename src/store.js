@@ -71,10 +71,17 @@ export const useStore = create((set, get) => ({
                 imageIconIndex: (state.imageIconIndex + 1) % data.length
             }));
             animationTimer += 100;
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
             if (animationTimer >= 6000) {
                 clearInterval(interval);
                 set({ map: mapData, animationFinished: true });
+
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 200);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 400);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 600);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 800);
             }
         }, 50);
 

@@ -15,6 +15,10 @@ export default function App() {
     const translateY = useSharedValue(-2);
 
     useEffect(() => {
+        loadSounds()
+    }, []);
+
+    useEffect(() => {
         translateY.value = withRepeat(
             withTiming(10, { duration: 1000, easing: Easing.inOut(Easing.quad) }),
             -1,
