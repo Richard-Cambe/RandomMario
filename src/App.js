@@ -1,10 +1,10 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React, { useEffect } from 'react';
-import { useFonts } from "expo-font";
-import Animated, { useSharedValue, withRepeat, withTiming, Easing } from "react-native-reanimated";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {useFonts} from "expo-font";
+import Animated, {useSharedValue, withRepeat, withTiming, Easing} from "react-native-reanimated";
 import * as Haptics from 'expo-haptics';
-import { useStore } from "./store";
-import { data } from './allMaps';
+import {useStore} from "./store";
+import {data} from './allMaps';
 
 export default function App() {
     const {
@@ -20,7 +20,7 @@ export default function App() {
 
     useEffect(() => {
         translateY.value = withRepeat(
-            withTiming(10, { duration: 1000, easing: Easing.inOut(Easing.quad) }),
+            withTiming(10, {duration: 1000, easing: Easing.inOut(Easing.quad)}),
             -1,
             true
         );
@@ -37,7 +37,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
-                <Image style={styles.Logo} source={require('../assets/pics/Logo.png')} />
+                <Image style={styles.Logo} source={require('../assets/pics/Logo.png')}/>
             </View>
             <View style={styles.logoContainer}>
                 <TouchableOpacity onPress={() => {
@@ -45,7 +45,7 @@ export default function App() {
                     playSound2()
                 }}>
                     <Animated.Image
-                        style={[styles.Title, { transform: [{ translateY: translateY }] }]}
+                        style={[styles.Title, {transform: [{translateY: translateY}]}]}
                         source={require('../assets/pics/randomize-me-2-4-2025.png')}
                     />
                 </TouchableOpacity>
@@ -54,12 +54,12 @@ export default function App() {
             <View>
                 {!animationFinished ? (
                     <View>
-                        <Image style={styles.Icon} source={data[imageIconIndex]?.boardIcon} />
+                        <Image style={styles.Icon} source={data[imageIconIndex]?.boardIcon}/>
                     </View>
                 ) : (
                     <View>
                         <Text style={styles.NameText}>{map?.name}</Text>
-                        <Image style={styles.Icon} source={map?.boardIcon} />
+                        <Image style={styles.Icon} source={map?.boardIcon}/>
                     </View>
                 )}
             </View>
@@ -72,20 +72,17 @@ export default function App() {
                         changeColor();
                         playSound()
                     }}
-                    style={[styles.TouchableButton, { backgroundColor: buttonColor }]}>
+                    style={[styles.TouchableButton, {backgroundColor: buttonColor}]}>
                     <Text style={styles.TouchableText}>RANDOMIZE ME</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.footer}>
+                <Text style={styles.footerText}>Richard Cambe © Nintendo. 2025</Text>
+                <Text style={styles.footerText}> version 1.1.0</Text>
             </View>
         </View>
     );
 }
-
-
-
-
-
-
-
 
 
 const styles = StyleSheet.create({
@@ -143,5 +140,16 @@ const styles = StyleSheet.create({
     Icon: {
         position: 'relative',
         alignSelf: 'center',
+    },
+    footer: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    footerText:{
+        color: '#fff',
     },
 });

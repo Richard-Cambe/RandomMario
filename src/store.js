@@ -11,7 +11,7 @@ export const useStore = create((set, get) => ({
     sound: null,
     sound2: null,
     buttonColor: "#00bfff",
-    colors: ["#ff1493", "#9acd32", "#ffa500", "#00bfff"],
+    colors: ["#ff1493", "#32cd32", "#ffa500", "#00bfff"],
 
     getTranslateY: () => useSharedValue(-2),
 
