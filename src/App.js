@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         width: 250,
         height: 250,
         resizeMode: 'contain',
-        marginTop: 27,
+        marginTop: 70,
     },
     touchableContainer: {
         position: 'absolute',

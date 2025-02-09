@@ -79,9 +79,14 @@ export const useStore = create((set, get) => ({
 
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
                 setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 200);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium), 300);
                 setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 400);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium), 500);
                 setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 600);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium), 700);
                 setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 800);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium), 900);
+                setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 1000);
             }
         }, 50);
 
