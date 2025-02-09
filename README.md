@@ -8,6 +8,6 @@
 
 ⭐ "expo start --tunnel" to load the app on your device.
 
-# Click on "Randomize Me" to start generating a new map for your game. #
+⭐ Click on "Randomize Me" to start generating a new map for your game.
 
 ⭐ Once the map is selected, have fun ! 
