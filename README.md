@@ -5,8 +5,7 @@
 ⭐ Clone or Fork the project using the GitHub repo 
 
 ⭐ Install expo-go on your mobile device and use the command 
-
-⭐ "expo start --tunnel" to load the app on your device.
+"expo start --tunnel" to load the app on your device.
 
 ⭐ Click on "Randomize Me" to start generating a new map for your game.
 
